@@ -1,0 +1,56 @@
+.logo {
+
+}
+.article-wrap {
+    text-align: center;
+}
+.item-img {
+    width: 50%;
+    max-width: 60%;
+}
+.price {
+
+    font-weight: bold;
+}
+.sheet-wrap {
+    text-align: center;
+    height: auto;
+/*border: 2px solid darkgrey;*/
+    border-radius: 5px;
+    width: 300px;
+    margin: auto;
+
+}
+.sheet-content {
+     padding-bottom: 5px;
+    /*border: 1px solid darkgrey;*/
+    width: auto;
+    /*background-color: red;*/
+     display: flex;
+  justify-content: left;
+
+}
+.sheet-content label {
+    background-color: silver;
+    width: 120px;
+    line-height: 25px;
+    color: dimgrey;
+
+}
+.sheet-content input {
+
+    width: 100%;
+}
+.sumit-bnt {
+    width: auto;
+    height: 30px;
+    background-color: dodgerblue;
+    color: white;
+    border: 0px;
+    border-radius: 5px;
+    margin: 10px;
+}
+.exchange {
+    color:blue;
+    font-size: 12px;
+}
