@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="./style.css">
+    <title>waveOn</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="script.js"></script>
+
+</head>
+
+
+<body>
+<div class="header">
+    <div class="logo">
+        waveOn
+    </div>
+    <div class="nav">
+        <button class="navBtn">
+            <a href=""><img src="../static/hamburger.png" alt="메뉴열기"></a>
+        </button>
+    </div>
+</div>
+<div class="main">
+    <picture class="bgImg">
+        <source
+                srcset="../static/large.png"
+                media="(min-width: 1000px)"
+        />
+        <source
+                srcset="../static/medium.png"
+                media="(min-width: 600px)"
+        />
+        <img
+                src="../static/small.png"
+                alt="background_img"
+        />
+    </picture>
+    <div class="blackBg"></div>
+    <div class="modalWrap">
+        <div id="closeBtn" class="modalClose"><a href="#" onclick="offClick()">close</a>
+        </div>
+        <div>
+            모달창 내용
+        </div>
+        <div class="dataWrap">
+            <dl class="modalDetail">
+                <dt>
+                    풍향
+                </dt>
+                <dd>
+                    풍향1
+                </dd>
+                <dt>
+                    풍속
+                </dt>
+                <dd>
+                    풍속1
+                </dd>
+                <dt>
+                    파고
+                </dt>
+                <dd>
+                    파고1
+                </dd>
+                <dt>
+                    풍풍
+                </dt>
+                <dd>
+                    풍풍1
+                </dd>
+            </dl>
+        </div>
+
+    </div>
+    <div class="menu">
+
+        <ul class="menuList">
+
+            <li class="menuItem Item1" onclick="onClick()">
+                &#x1F30A;
+                <div class="itemBack1 back">
+                    경포해수욕장
+                </div>
+
+            </li>
+            <li class="menuItem Item2">
+                &#x1F30A;
+                <div class="itemBack2 back">
+                    oo해수욕장
+                </div>
+            </li>
+<!--            <li class="menuItem Item3">-->
+<!--                &#x1F30A;-->
+<!--                <div class="itemBack3 back">-->
+<!--                    &lt;!&ndash;                    oo해수욕장&ndash;&gt;-->
+<!--                </div>-->
+<!--            </li>-->
+<!--            <li class="menuItem Item4">-->
+<!--                &#x1F30A;-->
+<!--                <div class="itemBack4 back">-->
+<!--                </div>-->
+<!--            </li>-->
+<!--            <li class="menuItem Item5">-->
+<!--                &#x1F30A;-->
+<!--                <div class="itemBack3 back">-->
+<!--                    &lt;!&ndash;                    oo해수욕장&ndash;&gt;-->
+<!--                </div>-->
+<!--            </li>-->
+<!--            <li class="menuItem Item6">-->
+<!--                &#x1F30A;-->
+<!--                <div class="itemBack3 back">-->
+<!--                    &lt;!&ndash;                    oo해수욕장&ndash;&gt;-->
+<!--                </div>-->
+<!--            </li>-->
+
+        </ul>
+    </div>
+
+</div>
+</body>
+</html>
