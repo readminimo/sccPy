@@ -1,0 +1,32 @@
+ * Serving Flask app "app" (lazy loading)
+ * Environment: production
+   WARNING: This is a development server. Do not use it in a production deployment.
+   Use a production WSGI server instead.
+ * Debug mode: on
+ * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 100-432-517
+39.7.24.128 - - [11/Jan/2021 07:05:14] "[37mGET / HTTP/1.1[0m" 200 -
+39.7.24.128 - - [11/Jan/2021 07:05:15] "[37mGET /memo HTTP/1.1[0m" 200 -
+39.7.24.128 - - [11/Jan/2021 07:05:15] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+39.7.24.128 - - [11/Jan/2021 07:07:17] "[37mGET / HTTP/1.1[0m" 200 -
+39.7.24.128 - - [11/Jan/2021 07:07:18] "[37mGET /memo HTTP/1.1[0m" 200 -
+ * Serving Flask app "app" (lazy loading)
+ * Environment: production
+   WARNING: This is a development server. Do not use it in a production deployment.
+   Use a production WSGI server instead.
+ * Debug mode: on
+ * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 100-432-517
+ * Serving Flask app "app" (lazy loading)
+ * Environment: production
+   WARNING: This is a development server. Do not use it in a production deployment.
+   Use a production WSGI server instead.
+ * Debug mode: on
+ * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 100-432-517
