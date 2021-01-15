@@ -9,19 +9,28 @@
     <link rel="stylesheet" href="/static/style.css">
     <script type="text/javascript">
 
-        function getDatas() {
-            if (document.querySelector('.modal_wrap').style.display = 'block') {
+        function showData2Block(beachCode) {
+            console.log('outer if, showData2Block', beachCode);
+            console.log(document.querySelector('.modal_wrap').style.display);
+
+            if (document.querySelector('.modal_wrap').style.display == 'block') {
+                // if ($('.modal_wrap').css('display') == 'block') {
                 console.log('확인22');
-                showDatas();
+                showWaveInfo(beachCode);
+                console.log('showData2Block', beachCode);
+
+
                 console.log('확인3');
             }
         }
 
-        function onClick() {
+        function clickBeachBlock(beachCode) {
             console.log('확인1');
             document.querySelector('.modal_wrap').style.display = 'block';
             console.log('확인2');
-            getDatas();
+            showData2Block(beachCode);
+
+            console.log('clickBeachBlock', beachCode);
 
             // document.querySelector('.black_bg').style.display = 'block';
             // document.querySelector('.itemBack1').style.display ='none';
@@ -29,34 +38,98 @@
 
         }
 
-        function offClick() {
+        function closeModal() {
             document.querySelector('.modal_wrap').style.display = 'none';
             // document.querySelector('.black_bg').style.display = 'none';
         }
 
-        function showDatas() {
+        function emptyElements() {
+
+
+            let emptyClass = document.getElementsByClassName("empty");
+            console.log(emptyClass);
+            // emptyClass.innerHTML = "";
+            console.log(typeof emptyClass);
+
+            //온클릭 했을 때 포문으로 돌면서 (여러개라서 객체로 줌 ) 비우
+            for (let i = 0; i < emptyClass.length; i++) {
+                idData = emptyClass[i].id;
+                console.log(idData);
+
+                $(`#${idData}`).empty();
+                //emptyClass[i] = "";
+                // emptyClass[i].id.innerHTML = "";
+            }
+
+        }
+
+
+        //
+
+        function showWaveInfo(beachCode) {
+
+            console.log('showWaveInfo', beachCode);
+
             $.ajax({
                 type: "GET",
-                url: "http://www.khoa.go.kr/oceangrid/grid/api/buObsRecent/search.do?ServiceKey=lOofIbPo/oeXI6OjnfL76A==&ObsCode=TW_0062&ResultType=json",
+                url: "http://www.khoa.go.kr/oceangrid/grid/api/buObsRecent/search.do?ServiceKey=lOofIbPo/oeXI6OjnfL76A==&ObsCode=" + beachCode + "&ResultType=json",
                 data: {},
                 success: function (response) {
                     console.log('확인 데이터 겟 보냄');
+
+
                     let obj = JSON.parse(response);
-                    // console.log(response);
-                    // console.log(typeof response);
-                    // console.log(obj)
-                    // console.log(typeof obj)
+                    // 제이슨으로 파싱
                     let record_time = obj['result']['data']['record_time'];
                     console.log(record_time);
+
+                    //이전 데이터 값 다 지우기
                     let air_temp = obj['result']['data']['air_temp'];
                     let water_temp = obj['result']['data']['water_temp'];
+                    let wind_speed = obj['result']['data']['wind_speed'];
                     let current_dir = obj['result']['data']['current_dir'];
+                    let current_speed = obj['result']['data']['current_speed'];
+                    let air_pres = obj['result']['data']['air_pres'];
                     let name = obj['result']['meta']['obs_post_name'];
                     console.log(air_temp, water_temp, current_dir, name)
-                    let tempHtml = `<p>${record_time}</p>`;
-                    $('#itemData').append(tempHtml);
+
+
+                    let nameTemp = name;
+                    let presTemp = `${air_pres} hPa`;
+                    let timeAll = record_time;
+
+
+                    let timeDate = timeAll.substr(0, 10);
+                    let timeTime = timeAll.substr(11, 8);
+                    let airTemperTemp = `${air_temp} °C`;
+                    let windDirTemp = `${current_dir}`;
+                    let windSpeedTemp = `${wind_speed}`;
+                    let waveDirTemp = `${current_dir}`;
+                    let waveSpeedTemp = `${current_speed}`;
+                    // $('#itemData').append(tempHtml);
+
+                    // $('#dataName').empty();
+                    emptyElements();
+                    $('#dataName').append(nameTemp);
+                    $('#datadate').append(timeDate);
+                    $('#dataTime').append(timeTime);
+                    $('#dataTemp').append(airTemperTemp);
+                    $('#dataPres').append(presTemp);
+                    $('#dataAirDir').append(windDirTemp);
+                    $('#dataAirSpeed').append(windSpeedTemp);
+                    $('#dataWaveDir').append(waveDirTemp);
+                    $('#dataWaveSpeed').append(waveSpeedTemp);
+
+                    chagebg(air_temp);
+
                 }
             })
+        }
+
+        function chagebg(temperature){
+            // api  호출
+
+            // background  이미지 바꿔주는 코드
         }
 
     </script>
@@ -68,6 +141,10 @@
         waveOn
     </div>
 </div>
+
+
+<!--<a class="close_btn" href="#" onclick="emptyElements()"> empty test </a>-->
+
 
 <div class="slide_nav">
     <ul class="nav_ul">
@@ -81,77 +158,96 @@
 </div>
 
 <div class="modal_wrap">
-    <div class="modal_close"><a class="close_btn" href="#" onclick="offClick()">close</a>
+    <div class="modal_close"><a class="close_btn" href="#" onclick="closeModal()"> X </a>
     </div>
-    <div id="itemData">
-        모달창 내용
+    <div id="itemData" class="modal_header ">
+        <div class="Rdata">
+            <p id="dataName" class="data_name empty">"name"</p>
+            <p id="datadate" class="data_date empty">"date"</p>
+        </div>
+        <div class="Ldata">
+            <p id="dataTime" class="data_time empty">"time"</p>
+        </div>
+    </div>
+    <div class="modal_middle">
+        <div>
+            <p id="dataTemp" class="data_temp empty">
+                "temp"
+            </p>
+            <p id="dataPres" class="data_pres empty">
+                "hpa"
+            </p>
+        </div>
+        <button>refresh</button>
     </div>
     <div class="data_wrap">
+
         <dl class="modal_detail">
+            <img class="data_img">
             <dt>
                 풍향
             </dt>
-            <dd>
+            <dd id="dataAirDir" class="empty">
                 풍향1
             </dd>
             <dt>
                 풍속
             </dt>
-            <dd>
+            <dd id="dataAirSpeed" class="empty">
                 풍속1
             </dd>
+            <img class="data_img">
             <dt>
-                파고
+                유향
             </dt>
-            <dd>
-                파고1
+            <dd id="dataWaveDir" class="empty">
+                유향1
             </dd>
             <dt>
-                풍풍
+                유쇽
             </dt>
-            <dd>
-                풍풍1
+            <dd id="dataWaveSpeed" class="empty">
+                유속1
             </dd>
         </dl>
     </div>
-
 </div>
 <div class="wrap_main">
     <ul class="main_list">
         <p id="1" class="sort_tag">강원도</p>
-        <li><a href="#" onclick="onClick()">경포대 해수욕장</a>
+        <li><a href="#" onclick="clickBeachBlock('TW_0062')">경포대 해수욕장</a>
         </li>
-        <li><a href="#" onclick="onClick()">속초 해수욕장</a>
+        <li><a href="#" onclick="clickBeachBlock('TW_0093')">속초 해수욕장</a>
         </li>
-        <li><a href="#" onclick="onClick()">낙산 해수욕장</a>
+        <li><a href="#" onclick="clickBeachBlock('TW_0091')">낙산 해수욕장</a>
         </li>
 
     </ul>
-    <ul  class="main_list">
-        <p id="2" class="sort_tag">충청남도</p>
-        <li><a href="#">대천해수욕장</a>
-        <li><a href="#">아산만</a>
-       </li>
+    <ul class="main_list">
+        <p id="2" class="sort_tag" >충청남도</p>
+        <li><a href="#" onclick="clickBeachBlock('TW_0069')">대천해수욕장</a>
+        <li><a href="#" onclick="clickBeachBlock('TW_0071')">아산만</a>
+        </li>
 
     </ul>
     <ul class="main_list">
         <p id="3" class="sort_tag">울산</p>
-        <li><a href="#">나사 해수욕장</a>
+        <li><a href="#" onclick="clickBeachBlock('HB_0002')">나사 해수욕장</a>
         </li>
-        <li><a href="#">진하 해수욕장</a>
+        <li><a href="#" onclick="clickBeachBlock('HB_0003')">진하 해수욕장</a>
         </li>
     </ul>
     <ul class="main_list">
         <p id="4" class="sort_tag">부산</p>
-        <li><a href="#">해운대 해수욕장</a>
+        <li><a href="#" onclick="clickBeachBlock('TW_0062')">해운대 해수욕장</a>
         </li>
-        <li><a href="#">송정 해수욕장</a>
+        <li><a href="#" onclick="clickBeachBlock('TW_0090')">송정 해수욕장</a>
         </li>
 
-        <li><a href="#">임랑 해수욕장</a>
+        <li><a href="#" onclick="clickBeachBlock('TW_0092')">임랑 해수욕장</a>
 
         </li>
-        <li><a href="#">기 해수욕장</a>
+        <li><a href="#"onclick="clickBeachBlock(' HB_0001')">기 해수욕장</a>
 
         </li>
         </li>
