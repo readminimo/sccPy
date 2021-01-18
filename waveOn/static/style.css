@@ -52,7 +52,8 @@ body {
 
     /*border: 1px solid lightslategrey;*/
     border-radius: 5px;
-    background-color: red;
+    background-color: lightgray;
+
     padding: 0px 15px;
 
     margin-right: 8px;
@@ -64,7 +65,7 @@ body {
     font-size: 0.75em;
     line-height: 25px;
     text-decoration: none;
-    color: black;
+    color: #fff;
 }
 
 .wrap_main {
@@ -84,13 +85,30 @@ body {
     font-weight: bold;
     color: lightslategrey;
 }
+/**/
 
+
+
+
+/*//*/
+/**/
 .main_list li {
     list-style: none;
     border-radius: 8px;
     border: 1px solid lightslategrey;
     text-align: center;
     /*width: 100vw;*/
+    line-height: 50px;
+    margin-bottom: 15px;
+    background-color: cornflowerblue;
+    color: white;
+}
+.scaleBox {
+    list-style: none;
+    border-radius: 8px;
+    border: 1px solid lightslategrey;
+    text-align: center;
+    height: 100vw;
     line-height: 50px;
     margin-bottom: 15px;
     background-color: cornflowerblue;
@@ -111,57 +129,65 @@ body {
     width: 80%;
     height: 300px;
     position: absolute;
-
+    background-color: #fff;
+    border-radius: 7px;
     /*top: 0px;*/
     /*left: 85px;*/
-    background: lightcyan;
+    border: 1px solid grey;
     z-index: 2;
 }
 
-/*.black_bg {*/
-/*    display: none;*/
-/*    position: absolute;*/
-/*    content: "";*/
-/*    width: 1000px;*/
-/*    height: 1000px;*/
-/*    background-color: rgba(0, 0, 0, 0.5);*/
-/*    top: 0;*/
-/*    left: 0;*/
-/*    z-index: 1;*/
-/*}*/
+.black_bg {
+    display: none;
+    position: absolute;
+    content: "";
+    width: 1000px;
+    height: 1000px;
+    background-color: rgba(0, 0, 0, 0.5);
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
 
 .modal_close {
     position: absolute;
     display: block;
     width: 30px;
     height: 30px;
-    top: -20px;
-    right: -20px;
+    top: -30px;
+    right: -0px;
 }
 
-.modal_close > close_btn a {
+.close_btn {
     display: block;
-    width: 100%;
-    height: 100%;
+    /*width: 20px;*/
+    /*height: 20px;*/
     overflow: hidden;
-    color: black;
+    color: #fff;
+    background-color: darkgrey;
+    border-radius: 5px;
     cursor: pointer;
     text-decoration: none;
+    padding: 3px;
+    text-align: center;
 }
 
 .modal_header {
-    background-color: mistyrose;
+    /*background-color: mistyrose;*/
+    border: 1px solid grey;
     display: flex;
     justify-content: space-between;
     padding: 10px;
 }
 .Rdata {
-    background-color: red;
-    width: 100px;
+    border:1px solid grey;
+    /*background-color: red;*/
+    width: 200px;
 }
 
 .Ldata{
-    width: 100px;
+    font-size: 12px;
+    color: grey;
 }
 
 .modal_middle {
@@ -181,16 +207,23 @@ body {
     border-radius: 7px;
 
 }
-.data_temp , .data_pres , .data_time {
+.data_temp , .data_pres , .data_time , .data_date , .data_name{
      margin: 0px;
+}
 
+.data_name {
+   font-size: 20px;
+}
+
+#dataTime {
+    font-weight: bold;
 }
 
 .modal_detail {
     width: 100%;
     position: absolute;
     background-color: lavender;
-    bottom: 0;
+    top: 50%;
     left: 0;
     margin: 0;
     display: grid;
@@ -212,7 +245,7 @@ body {
 .data_img {
     width: 10px;
     height: 10px;
-    background-color: red;
+    /*background-color: red;*/
 }
 
 .modal_detail dt {
